@@ -11,6 +11,11 @@
 		292F3B6A2A4384A00079751D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B692A4384A00079751D /* SceneDelegate.swift */; };
 		292F3B712A4384A10079751D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292F3B702A4384A10079751D /* Assets.xcassets */; };
 		292F3B742A4384A10079751D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 292F3B722A4384A10079751D /* LaunchScreen.storyboard */; };
+		292F3B7F2A4387B00079751D /* MCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B7E2A4387B00079751D /* MCTabBarController.swift */; };
+		292F3B822A4388020079751D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B812A4388020079751D /* Constants.swift */; };
+		292F3B842A4388160079751D /* UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B832A4388160079751D /* UIElements.swift */; };
+		292F3B872A438A010079751D /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B862A438A010079751D /* ExploreViewController.swift */; };
+		292F3B892A438A5F0079751D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B882A438A5F0079751D /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		292F3B702A4384A10079751D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		292F3B732A4384A10079751D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		292F3B752A4384A10079751D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		292F3B7E2A4387B00079751D /* MCTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTabBarController.swift; sourceTree = "<group>"; };
+		292F3B812A4388020079751D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		292F3B832A4388160079751D /* UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElements.swift; sourceTree = "<group>"; };
+		292F3B862A438A010079751D /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		292F3B882A438A5F0079751D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,11 +64,56 @@
 			children = (
 				292F3B672A4384A00079751D /* AppDelegate.swift */,
 				292F3B692A4384A00079751D /* SceneDelegate.swift */,
+				292F3B852A4389DD0079751D /* Screens */,
+				292F3B7C2A43874B0079751D /* Custom Views */,
+				292F3B802A4387E30079751D /* Utilities */,
+				292F3B7B2A4386B10079751D /* Supporting Files */,
+			);
+			path = MarvelCharacters;
+			sourceTree = "<group>";
+		};
+		292F3B7B2A4386B10079751D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				292F3B702A4384A10079751D /* Assets.xcassets */,
 				292F3B722A4384A10079751D /* LaunchScreen.storyboard */,
 				292F3B752A4384A10079751D /* Info.plist */,
 			);
-			path = MarvelCharacters;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		292F3B7C2A43874B0079751D /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				292F3B7D2A43875D0079751D /* Tab Bar Controller */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		292F3B7D2A43875D0079751D /* Tab Bar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				292F3B7E2A4387B00079751D /* MCTabBarController.swift */,
+			);
+			path = "Tab Bar Controller";
+			sourceTree = "<group>";
+		};
+		292F3B802A4387E30079751D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				292F3B812A4388020079751D /* Constants.swift */,
+				292F3B832A4388160079751D /* UIElements.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		292F3B852A4389DD0079751D /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				292F3B862A438A010079751D /* ExploreViewController.swift */,
+				292F3B882A438A5F0079751D /* FavoritesViewController.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292F3B872A438A010079751D /* ExploreViewController.swift in Sources */,
 				292F3B682A4384A00079751D /* AppDelegate.swift in Sources */,
+				292F3B892A438A5F0079751D /* FavoritesViewController.swift in Sources */,
 				292F3B6A2A4384A00079751D /* SceneDelegate.swift in Sources */,
+				292F3B7F2A4387B00079751D /* MCTabBarController.swift in Sources */,
+				292F3B822A4388020079751D /* Constants.swift in Sources */,
+				292F3B842A4388160079751D /* UIElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +333,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W6HRJ6R6XG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelCharacters/Info.plist;
+				INFOPLIST_FILE = "MarvelCharacters/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -301,10 +360,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W6HRJ6R6XG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MarvelCharacters/Info.plist;
+				INFOPLIST_FILE = "MarvelCharacters/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
