@@ -1,5 +1,5 @@
 //
-//  FavoritesViewController.swift
+//  CharacterListViewController.swift
 //  MarvelCharacters
 //
 //  Created by iMac Pro on 6/21/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class CharacterListViewController: UIViewController {
 
     //MARK: - Properties
     
@@ -16,10 +16,10 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .blue
+        view.backgroundColor = .yellow
     }
-
     
+
     //MARK: - Functions
 
     

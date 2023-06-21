@@ -8,5 +8,9 @@
 import UIKit
 
 enum Colors {
-    static let marvelRed = UIColor(red: 255/255, green: 0/255, blue: 0/255, alpha: 1.0)
+    static let marvelRed = UIColor(red: 240/255, green: 20/255, blue: 30/255, alpha: 1.0)
+}
+
+enum Images {
+    static let marvelLogo = UIImage(named: "marvelLogo")
 }
