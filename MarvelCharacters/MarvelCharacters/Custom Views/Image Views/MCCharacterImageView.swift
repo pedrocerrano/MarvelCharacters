@@ -11,7 +11,7 @@ class MCCharacterImageView: UIImageView {
 
     //MARK: - Properties
     let cache       = APIService.shared.cache
-    let placeholder = SFSymbols.placeholder
+    let placeholder = Images.marvelLogo
     
     
     //MARK: - Designated Initializer

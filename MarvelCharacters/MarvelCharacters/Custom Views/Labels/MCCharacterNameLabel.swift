@@ -1,13 +1,13 @@
 //
-//  MCComicsLabel.swift
+//  MCCharacterNameLabel.swift
 //  MarvelCharacters
 //
-//  Created by iMac Pro on 6/21/23.
+//  Created by iMac Pro on 6/22/23.
 //
 
 import UIKit
 
-class MCComicsLabel: UILabel {
+class MCCharacterNameLabel: UILabel {
 
     //MARK: - Designated Initializer
     override init(frame: CGRect) {
@@ -24,14 +24,17 @@ class MCComicsLabel: UILabel {
     convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font = UIFont(name: "Marvel-Regular", size: fontSize)
+        self.font          = UIFont.systemFont(ofSize: fontSize, weight: .bold)
     }
-
+    
     
     //MARK: - Functions
-    func configure() {
-        textColor                 = .white
+    private func configure() {
+        textColor                 = .label
         adjustsFontSizeToFitWidth = true
+        minimumScaleFactor        = 0.7
+        numberOfLines             = 3
+//        lineBreakMode             = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
-}
+} //: CLASS

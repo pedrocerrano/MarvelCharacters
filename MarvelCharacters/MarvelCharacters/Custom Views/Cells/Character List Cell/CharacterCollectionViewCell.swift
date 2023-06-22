@@ -11,7 +11,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     static let reuseID     = "CharacterCell"
-    let characterImageView = MCCharacterImageView(frame: .zero)
+    var characterImageView = MCCharacterImageView(frame: .zero)
     
     
     //MARK: - Designated Initializer
@@ -26,6 +26,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        #warning("How can I make prepareForReuse efficient?")
     }
     
     

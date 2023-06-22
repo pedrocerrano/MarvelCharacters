@@ -118,8 +118,10 @@ extension CharacterListViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let character = characters[indexPath.item]
-        print(character.name)
+        let character           = characters[indexPath.item]
+        let destinationVC       = ComicsListViewController()
+        destinationVC.character = character
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
 }
 

@@ -11,7 +11,7 @@ class ExploreViewController: UIViewController {
 
     //MARK: - Properties
     let logoImageView         = UIImageView()
-    let comicsLabel           = MCComicsLabel(textAlignment: .center, fontSize: 40)
+    let comicsLabel           = MCComicsTitlePageLabel(textAlignment: .center, fontSize: 40)
     let characterTextField    = MCTextField()
     let searchCharacterButton = MCButton(fontColor: .white, backgroundColor: .blue, title: "SEARCH")
     let exploreOnMyOwnButton  = MCButton(fontColor: .white, backgroundColor: .blue, title: "Character List")

@@ -20,7 +20,7 @@ struct CharacterView: View {
                     .aspectRatio(1, contentMode: .fill)
                     .clipped()
             } placeholder: {
-                Image(uiImage: SFSymbols.placeholder!)
+                Image(uiImage: Images.marvelLogo!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
