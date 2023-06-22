@@ -10,6 +10,7 @@ import UIKit
 class ComicsListViewController: UIViewController {
 
     //MARK: - Properties
+    var character: Character!
     
     
     //MARK: - Lifecycle

@@ -18,7 +18,7 @@ class APIService {
     let comicPath = "/comics"
     
     let limitKey   = "limit"
-    let limitValue = "50"
+    let limitValue = "100"
     let offsetKey  = "offset"
     
     let timeStampKey   = "ts"
@@ -56,14 +56,14 @@ class APIService {
         }
     }
     
-    func fetchCharacterImage(forCharacter character: Character) async throws -> UIImage? {
+    func fetchCharacterImage(forCharacter character: Character) async -> UIImage? {
         let imageURLString = "\(character.thumbnail.imagePath).\(character.thumbnail.imageExtention)"
         let cacheKey = NSString(string: imageURLString)
         if let image = cache.object(forKey: cacheKey) {
             return image
         }
         
-        guard let finalURL = URL(string: imageURLString) else { throw MarvelError.invalidURL }
+        guard let finalURL = URL(string: imageURLString) else { return nil }
         print("fetchAvengerImage Final URL: \(finalURL)")
         
         do {

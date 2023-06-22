@@ -14,7 +14,7 @@ class ExploreViewController: UIViewController {
     let comicsLabel           = MCComicsLabel(textAlignment: .center, fontSize: 40)
     let characterTextField    = MCTextField()
     let searchCharacterButton = MCButton(fontColor: .white, backgroundColor: .blue, title: "SEARCH")
-    let exploreOnMyOwnButton  = MCButton(fontColor: .white, backgroundColor: .blue, title: "Explore on my own")
+    let exploreOnMyOwnButton  = MCButton(fontColor: .white, backgroundColor: .blue, title: "Character List")
     
     var isCharacterEntered: Bool {
         return !characterTextField.text!.isEmpty
@@ -35,6 +35,7 @@ class ExploreViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         characterTextField.text = ""
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     

@@ -25,7 +25,7 @@ struct Results: Codable {
     let listResults: [Character]
 }
 
-struct Character: Codable {
+struct Character: Codable, Hashable {
     let id: Int
     let name: String
     let description: String
@@ -34,7 +34,7 @@ struct Character: Codable {
     let comics: Comics
 }
 
-struct Thumbnail: Codable {
+struct Thumbnail: Codable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case imagePath      = "path"
         case imageExtention = "extension"
@@ -44,7 +44,7 @@ struct Thumbnail: Codable {
     let imageExtention: String
 }
 
-struct Comics: Codable {
+struct Comics: Codable, Hashable {
     let available: Int
     let collectionURI: String
 }
