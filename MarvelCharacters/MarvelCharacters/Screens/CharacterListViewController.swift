@@ -12,10 +12,14 @@ class CharacterListViewController: MCDataLoadingViewController {
     //MARK: - Properties
     enum Section { case main }
     
+    let logoImageView   = UIImageView()
+    let charactersLabel = MCComicsTitlePageLabel(textAlignment: .center, fontSize: 40)
+
     var characters: [Character]         = []
     var filteredCharacters: [Character] = []
     var pageOffset                      = 0
     
+    let contentView = UIView()
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Character>!
     
@@ -23,50 +27,55 @@ class CharacterListViewController: MCDataLoadingViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         configureViewController()
-        configureSearchController()
+        configureViews()
         configureCollectionView()
         configureDataSource()
         fetchCharacters(pageOffset: String(pageOffset))
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    
-    
 
+    
     //MARK: - Functions
     private func configureViewController() {
-        view.backgroundColor = .systemBackground
-        title = "Character List"
+        view.backgroundColor = Colors.marvelRed
     }
     
-    private func configureSearchController() {
-        let searchController                                  = UISearchController()
-        searchController.searchResultsUpdater                 = self
-        searchController.searchBar.placeholder                = "Search for a Character"
-        searchController.obscuresBackgroundDuringPresentation = false
-        navigationItem.searchController                       = searchController
-        navigationItem.hidesSearchBarWhenScrolling            = false
+    private func configureViews() {
+        view.addSubview(logoImageView)
+        view.addSubview(charactersLabel)
+        view.addSubview(contentView)
+        
+        logoImageView.image = Images.marvelLogo
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        charactersLabel.text = LabelText.characters
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .systemBackground
+        
+        NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 2/5),
+            
+            charactersLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor),
+            charactersLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            charactersLabel.widthAnchor.constraint(equalTo: logoImageView.widthAnchor),
+            charactersLabel.heightAnchor.constraint(equalToConstant: 40),
+            
+            contentView.topAnchor.constraint(equalTo: charactersLabel.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
     
     private func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createCharacterFlowLayout(in: view))
-        view.addSubview(collectionView)
+        contentView.addSubview(collectionView)
         collectionView.delegate        = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseID)
-    }
-    
-    private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Character>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, character) in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseID, for: indexPath) as! CharacterCollectionViewCell
-            cell.set(character: character)
-            return cell
-        })
     }
     
     private func updateData(on characters: [Character]) {
@@ -101,6 +110,34 @@ class CharacterListViewController: MCDataLoadingViewController {
         self.updateData(on: self.characters)
     }
     
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Character>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, character) in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseID, for: indexPath) as! CharacterCollectionViewCell
+            cell.set(character: character)
+            return cell
+        })
+    }
+    
+//    private func showActivityIndicator(forView containerView: UIView) {
+//        containerView.addSubview(activityIndicator)
+//
+//        activityIndicator.color = Colors.marvelRed
+//        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+//
+//        NSLayoutConstraint.activate([
+//            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+//            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
+//        ])
+//
+//        activityIndicator.startAnimating()
+//    }
+//
+//    private func dismissActivityIndicator() {
+//        DispatchQueue.main.async {
+//            self.activityIndicator.removeFromSuperview()
+//            self.activityIndicator.stopAnimating()
+//        }
+//    }
 } //: CLASS
 
 
@@ -119,23 +156,10 @@ extension CharacterListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let character           = characters[indexPath.item]
-        let destinationVC       = ComicsListViewController()
+        print("\(character.name)")
+        
+        let destinationVC       = CharacterDetailViewController()
         destinationVC.character = character
         navigationController?.pushViewController(destinationVC, animated: true)
-    }
-}
-
-
-//MARK: - SearchResultsUpdating
-extension CharacterListViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
-            filteredCharacters.removeAll()
-            updateData(on: characters)
-            return
-        }
-        
-        filteredCharacters = characters.filter { $0.name.lowercased().contains(filter.lowercased()) }
-        updateData(on: filteredCharacters)
     }
 }

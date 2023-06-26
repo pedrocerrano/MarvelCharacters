@@ -33,10 +33,9 @@ struct CharacterView_Previews: PreviewProvider {
     
     static var previews: some View {
         let width                       = ScreenSize.width
-        let padding: CGFloat            = 8
-        let minimumItemSpacing: CGFloat = 8
-        let availableWidth              = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidth                   = availableWidth / 3
+        let minimumItemSpacing: CGFloat = 1
+        let availableWidth              = width - (minimumItemSpacing * 3)
+        let itemWidth                   = availableWidth / 4
         
         CharacterView(thumbnail: demoThumbnail)
             .frame(width: itemWidth)

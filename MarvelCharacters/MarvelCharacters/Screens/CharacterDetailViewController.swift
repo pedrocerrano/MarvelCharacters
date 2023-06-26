@@ -1,5 +1,5 @@
 //
-//  ComicsListViewController.swift
+//  CharacterDetailViewController.swift
 //  MarvelCharacters
 //
 //  Created by iMac Pro on 6/21/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ComicsListViewController: UIViewController {
+class CharacterDetailViewController: UIViewController {
 
     //MARK: - Properties
     let headerView          = UIView()
@@ -29,6 +29,8 @@ class ComicsListViewController: UIViewController {
     //MARK: - Functions
     private func configureViewController() {
         view.backgroundColor = .systemBackground
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        title = character.name
     }
     
 //    private func configureUI(with character: Character) {

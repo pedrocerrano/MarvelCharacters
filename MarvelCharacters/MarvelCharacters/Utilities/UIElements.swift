@@ -12,5 +12,6 @@ enum Colors {
 }
 
 enum Images {
-    static let marvelLogo = UIImage(named: "marvelLogo")
+    static let marvelLogo  = UIImage(named: "marvelLogo")
+    static let placeholder = UIImage(named: "marvelPlaceholder")
 }

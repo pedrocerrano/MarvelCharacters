@@ -26,14 +26,13 @@
 		292F3B7F2A4387B00079751D /* MCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B7E2A4387B00079751D /* MCTabBarController.swift */; };
 		292F3B822A4388020079751D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B812A4388020079751D /* Constants.swift */; };
 		292F3B842A4388160079751D /* UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B832A4388160079751D /* UIElements.swift */; };
-		292F3B872A438A010079751D /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B862A438A010079751D /* ExploreViewController.swift */; };
+		292F3B872A438A010079751D /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B862A438A010079751D /* CharacterListViewController.swift */; };
 		292F3B892A438A5F0079751D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B882A438A5F0079751D /* FavoritesViewController.swift */; };
 		292F3B8C2A43960C0079751D /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 292F3B8B2A43960C0079751D /* Marvel-Regular.ttf */; };
 		292F3B8E2A4396F20079751D /* MCComicsTitlePageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B8D2A4396F20079751D /* MCComicsTitlePageLabel.swift */; };
 		292F3B922A439C530079751D /* MCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B912A439C530079751D /* MCTextField.swift */; };
 		292F3B952A439FA10079751D /* MCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B942A439FA10079751D /* MCButton.swift */; };
-		292F3B972A43A7740079751D /* ComicsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B962A43A7740079751D /* ComicsListViewController.swift */; };
-		292F3B992A43A7880079751D /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B982A43A7880079751D /* CharacterListViewController.swift */; };
+		292F3B972A43A7740079751D /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B962A43A7740079751D /* CharacterDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,14 +57,13 @@
 		292F3B7E2A4387B00079751D /* MCTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTabBarController.swift; sourceTree = "<group>"; };
 		292F3B812A4388020079751D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		292F3B832A4388160079751D /* UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElements.swift; sourceTree = "<group>"; };
-		292F3B862A438A010079751D /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		292F3B862A438A010079751D /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		292F3B882A438A5F0079751D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		292F3B8B2A43960C0079751D /* Marvel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Regular.ttf"; sourceTree = "<group>"; };
 		292F3B8D2A4396F20079751D /* MCComicsTitlePageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCComicsTitlePageLabel.swift; sourceTree = "<group>"; };
 		292F3B912A439C530079751D /* MCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTextField.swift; sourceTree = "<group>"; };
 		292F3B942A439FA10079751D /* MCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCButton.swift; sourceTree = "<group>"; };
-		292F3B962A43A7740079751D /* ComicsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsListViewController.swift; sourceTree = "<group>"; };
-		292F3B982A43A7880079751D /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
+		292F3B962A43A7740079751D /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,9 +206,8 @@
 		292F3B852A4389DD0079751D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				292F3B862A438A010079751D /* ExploreViewController.swift */,
-				292F3B982A43A7880079751D /* CharacterListViewController.swift */,
-				292F3B962A43A7740079751D /* ComicsListViewController.swift */,
+				292F3B862A438A010079751D /* CharacterListViewController.swift */,
+				292F3B962A43A7740079751D /* CharacterDetailViewController.swift */,
 				292F3B882A438A5F0079751D /* FavoritesViewController.swift */,
 			);
 			path = Screens;
@@ -325,15 +322,14 @@
 				29096AB22A44B44C0008542A /* CharacterCollectionViewCell.swift in Sources */,
 				29096AA12A448E090008542A /* Character.swift in Sources */,
 				29096AA62A449AA50008542A /* APIService.swift in Sources */,
-				292F3B872A438A010079751D /* ExploreViewController.swift in Sources */,
+				292F3B872A438A010079751D /* CharacterListViewController.swift in Sources */,
 				29096AAA2A44A92B0008542A /* MCDataLoadingViewController.swift in Sources */,
 				292F3B922A439C530079751D /* MCTextField.swift in Sources */,
 				29096ABC2A44F1C60008542A /* MCCharacterSecondaryLabel.swift in Sources */,
 				29096AAD2A44AB770008542A /* UIHelper.swift in Sources */,
 				292F3B682A4384A00079751D /* AppDelegate.swift in Sources */,
-				292F3B972A43A7740079751D /* ComicsListViewController.swift in Sources */,
+				292F3B972A43A7740079751D /* CharacterDetailViewController.swift in Sources */,
 				29096AB02A44ACD90008542A /* CharacterView.swift in Sources */,
-				292F3B992A43A7880079751D /* CharacterListViewController.swift in Sources */,
 				292F3B892A438A5F0079751D /* FavoritesViewController.swift in Sources */,
 				29096ABA2A44EB2F0008542A /* MCCharacterNameLabel.swift in Sources */,
 				292F3B6A2A4384A00079751D /* SceneDelegate.swift in Sources */,

@@ -26,15 +26,16 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        #warning("How can I make prepareForReuse efficient?")
+        
     }
     
     
     //MARK: - Functions
     func set(character: Character) {
-        contentConfiguration = UIHostingConfiguration {
-            CharacterView(thumbnail: character.thumbnail)
-        }
+//        contentConfiguration = UIHostingConfiguration {
+//            CharacterView(thumbnail: character.thumbnail)
+//        }
+        characterImageView.fetchCharacterImage(for: character)
     }
     
     private func configure() {

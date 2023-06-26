@@ -20,7 +20,7 @@ class MCTabBarController: UITabBarController {
     
     //MARK: - Functions
     func createExploreNC() -> UINavigationController {
-        let exploreVC = ExploreViewController()
+        let exploreVC = CharacterListViewController()
         exploreVC.tabBarItem = UITabBarItem(title: "Explore", image: SFSymbols.explore, tag: 0)
         
         return UINavigationController(rootViewController: exploreVC)
