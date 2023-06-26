@@ -29,7 +29,7 @@ struct ComicsResults: Codable {
     let comicResults: [Comic]
 }
 
-struct Comic: Codable {
+struct Comic: Codable, Hashable {
     let format: String
     let formatType: String
     let noVariants: Bool
@@ -41,11 +41,11 @@ struct Comic: Codable {
     let thumbnail: ComicThumbnail
 }
 
-struct ComicText: Codable {
+struct ComicText: Codable, Hashable {
     let text: String
 }
 
-struct ComicThumbnail: Codable {
+struct ComicThumbnail: Codable, Hashable {
     
     private enum CodingKeys: String, CodingKey {
         case imagePath      = "path"

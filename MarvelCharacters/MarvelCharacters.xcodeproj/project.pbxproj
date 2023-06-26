@@ -15,8 +15,7 @@
 		29096AAD2A44AB770008542A /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096AAC2A44AB770008542A /* UIHelper.swift */; };
 		29096AB02A44ACD90008542A /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096AAF2A44ACD90008542A /* CharacterView.swift */; };
 		29096AB22A44B44C0008542A /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096AB12A44B44C0008542A /* CharacterCollectionViewCell.swift */; };
-		29096AB52A44B7630008542A /* MCCharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096AB42A44B7630008542A /* MCCharacterImageView.swift */; };
-		29096AB82A44E9810008542A /* MCCharacterHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096AB72A44E9810008542A /* MCCharacterHeaderViewController.swift */; };
+		29096AB52A44B7630008542A /* MCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096AB42A44B7630008542A /* MCImageView.swift */; };
 		29096ABA2A44EB2F0008542A /* MCCharacterNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096AB92A44EB2F0008542A /* MCCharacterNameLabel.swift */; };
 		29096ABC2A44F1C60008542A /* MCCharacterSecondaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29096ABB2A44F1C60008542A /* MCCharacterSecondaryLabel.swift */; };
 		292F3B682A4384A00079751D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B672A4384A00079751D /* AppDelegate.swift */; };
@@ -33,6 +32,9 @@
 		292F3B922A439C530079751D /* MCTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B912A439C530079751D /* MCTextField.swift */; };
 		292F3B952A439FA10079751D /* MCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B942A439FA10079751D /* MCButton.swift */; };
 		292F3B972A43A7740079751D /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F3B962A43A7740079751D /* CharacterDetailViewController.swift */; };
+		297ABED82A4A1F6B00D3F85B /* MCImageHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297ABED72A4A1F6B00D3F85B /* MCImageHeaderViewController.swift */; };
+		297ABEDD2A4A3B9100D3F85B /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297ABEDC2A4A3B9100D3F85B /* ComicCollectionViewCell.swift */; };
+		297ABEE12A4A3D1E00D3F85B /* ComicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297ABEE02A4A3D1E00D3F85B /* ComicView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +46,7 @@
 		29096AAC2A44AB770008542A /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		29096AAF2A44ACD90008542A /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		29096AB12A44B44C0008542A /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
-		29096AB42A44B7630008542A /* MCCharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCharacterImageView.swift; sourceTree = "<group>"; };
-		29096AB72A44E9810008542A /* MCCharacterHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCharacterHeaderViewController.swift; sourceTree = "<group>"; };
+		29096AB42A44B7630008542A /* MCImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCImageView.swift; sourceTree = "<group>"; };
 		29096AB92A44EB2F0008542A /* MCCharacterNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCharacterNameLabel.swift; sourceTree = "<group>"; };
 		29096ABB2A44F1C60008542A /* MCCharacterSecondaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCharacterSecondaryLabel.swift; sourceTree = "<group>"; };
 		292F3B642A4384A00079751D /* MarvelCharacters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelCharacters.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +65,9 @@
 		292F3B912A439C530079751D /* MCTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTextField.swift; sourceTree = "<group>"; };
 		292F3B942A439FA10079751D /* MCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCButton.swift; sourceTree = "<group>"; };
 		292F3B962A43A7740079751D /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		297ABED72A4A1F6B00D3F85B /* MCImageHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCImageHeaderViewController.swift; sourceTree = "<group>"; };
+		297ABEDC2A4A3B9100D3F85B /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
+		297ABEE02A4A3D1E00D3F85B /* ComicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				29096AA92A44A92B0008542A /* MCDataLoadingViewController.swift */,
-				29096AB72A44E9810008542A /* MCCharacterHeaderViewController.swift */,
+				297ABED72A4A1F6B00D3F85B /* MCImageHeaderViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -107,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				29096AB62A44DE9B0008542A /* Character List Cell */,
+				297ABEDB2A4A3B6800D3F85B /* Comic List Cell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -114,7 +119,7 @@
 		29096AB32A44B73A0008542A /* Image Views */ = {
 			isa = PBXGroup;
 			children = (
-				29096AB42A44B7630008542A /* MCCharacterImageView.swift */,
+				29096AB42A44B7630008542A /* MCImageView.swift */,
 			);
 			path = "Image Views";
 			sourceTree = "<group>";
@@ -122,8 +127,8 @@
 		29096AB62A44DE9B0008542A /* Character List Cell */ = {
 			isa = PBXGroup;
 			children = (
-				29096AAF2A44ACD90008542A /* CharacterView.swift */,
 				29096AB12A44B44C0008542A /* CharacterCollectionViewCell.swift */,
+				29096AAF2A44ACD90008542A /* CharacterView.swift */,
 			);
 			path = "Character List Cell";
 			sourceTree = "<group>";
@@ -247,6 +252,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		297ABEDB2A4A3B6800D3F85B /* Comic List Cell */ = {
+			isa = PBXGroup;
+			children = (
+				297ABEDC2A4A3B9100D3F85B /* ComicCollectionViewCell.swift */,
+				297ABEE02A4A3D1E00D3F85B /* ComicView.swift */,
+			);
+			path = "Comic List Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,10 +332,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29096AB52A44B7630008542A /* MCCharacterImageView.swift in Sources */,
+				29096AB52A44B7630008542A /* MCImageView.swift in Sources */,
 				29096AB22A44B44C0008542A /* CharacterCollectionViewCell.swift in Sources */,
+				297ABEDD2A4A3B9100D3F85B /* ComicCollectionViewCell.swift in Sources */,
 				29096AA12A448E090008542A /* Character.swift in Sources */,
 				29096AA62A449AA50008542A /* APIService.swift in Sources */,
+				297ABEE12A4A3D1E00D3F85B /* ComicView.swift in Sources */,
 				292F3B872A438A010079751D /* CharacterListViewController.swift in Sources */,
 				29096AAA2A44A92B0008542A /* MCDataLoadingViewController.swift in Sources */,
 				292F3B922A439C530079751D /* MCTextField.swift in Sources */,
@@ -331,10 +347,10 @@
 				292F3B972A43A7740079751D /* CharacterDetailViewController.swift in Sources */,
 				29096AB02A44ACD90008542A /* CharacterView.swift in Sources */,
 				292F3B892A438A5F0079751D /* FavoritesViewController.swift in Sources */,
+				297ABED82A4A1F6B00D3F85B /* MCImageHeaderViewController.swift in Sources */,
 				29096ABA2A44EB2F0008542A /* MCCharacterNameLabel.swift in Sources */,
 				292F3B6A2A4384A00079751D /* SceneDelegate.swift in Sources */,
 				292F3B952A439FA10079751D /* MCButton.swift in Sources */,
-				29096AB82A44E9810008542A /* MCCharacterHeaderViewController.swift in Sources */,
 				29096AA32A4495870008542A /* Comic.swift in Sources */,
 				292F3B8E2A4396F20079751D /* MCComicsTitlePageLabel.swift in Sources */,
 				292F3B7F2A4387B00079751D /* MCTabBarController.swift in Sources */,

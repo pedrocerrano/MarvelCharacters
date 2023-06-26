@@ -76,4 +76,12 @@ class APIService {
             return nil
         }
     }
+    
+    func fetchComicList() {
+        
+    }
+    
+    func fetchComicImage() {
+        
+    }
 } //: CLASS

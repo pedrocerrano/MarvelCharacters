@@ -15,11 +15,24 @@ enum UIHelper {
         let availableWidth              = width - (minimumItemSpacing * 3)
         let itemWidth                   = availableWidth / 4
         
-        let flowLayout                  = UICollectionViewFlowLayout()
-//        flowLayout.sectionInset         = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.minimumLineSpacing   = 1
+        let flowLayout                     = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing      = 1
         flowLayout.minimumInteritemSpacing = 1
-        flowLayout.itemSize             = CGSize(width: itemWidth, height: itemWidth)
+        flowLayout.itemSize                = CGSize(width: itemWidth, height: itemWidth)
+        
+        return flowLayout
+    }
+    
+    static func createComicFlowLayout(in view: UIView) -> UICollectionViewFlowLayout {
+        let width                       = view.bounds.width
+        let minimumItemSpacing: CGFloat = 5
+        let availableWidth              = width - (minimumItemSpacing * 2)
+        let itemWidth                   = availableWidth / 3
+        
+        let flowLayout                     = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing      = 1
+        flowLayout.minimumInteritemSpacing = 1
+        flowLayout.itemSize                = CGSize(width: itemWidth, height: itemWidth * 1.5)
         
         return flowLayout
     }

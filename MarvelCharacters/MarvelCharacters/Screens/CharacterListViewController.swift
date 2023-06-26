@@ -14,14 +14,15 @@ class CharacterListViewController: MCDataLoadingViewController {
     
     let logoImageView   = UIImageView()
     let charactersLabel = MCComicsTitlePageLabel(textAlignment: .center, fontSize: 40)
+    let contentView     = UIView()
+    
+    var collectionView: UICollectionView!
+    var dataSource: UICollectionViewDiffableDataSource<Section, Character>!
 
     var characters: [Character]         = []
     var filteredCharacters: [Character] = []
     var pageOffset                      = 0
     
-    let contentView = UIView()
-    var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Character>!
     
     
     //MARK: - Lifecycle
@@ -46,10 +47,11 @@ class CharacterListViewController: MCDataLoadingViewController {
         view.addSubview(charactersLabel)
         view.addSubview(contentView)
         
-        logoImageView.image = Images.marvelLogo
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.image  = Images.marvelLogo
         charactersLabel.text = LabelText.characters
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints  = false
         contentView.backgroundColor = .systemBackground
         
         NSLayoutConstraint.activate([
@@ -117,27 +119,6 @@ class CharacterListViewController: MCDataLoadingViewController {
             return cell
         })
     }
-    
-//    private func showActivityIndicator(forView containerView: UIView) {
-//        containerView.addSubview(activityIndicator)
-//
-//        activityIndicator.color = Colors.marvelRed
-//        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-//
-//        NSLayoutConstraint.activate([
-//            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-//            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
-//        ])
-//
-//        activityIndicator.startAnimating()
-//    }
-//
-//    private func dismissActivityIndicator() {
-//        DispatchQueue.main.async {
-//            self.activityIndicator.removeFromSuperview()
-//            self.activityIndicator.stopAnimating()
-//        }
-//    }
 } //: CLASS
 
 
@@ -162,4 +143,4 @@ extension CharacterListViewController: UICollectionViewDelegate {
         destinationVC.character = character
         navigationController?.pushViewController(destinationVC, animated: true)
     }
-}
+} //: CollectionViewDelegate

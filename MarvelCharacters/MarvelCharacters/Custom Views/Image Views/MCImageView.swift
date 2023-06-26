@@ -1,5 +1,5 @@
 //
-//  MCCharacterImageView.swift
+//  MCImageView.swift
 //  MarvelCharacters
 //
 //  Created by iMac Pro on 6/22/23.
@@ -36,5 +36,9 @@ class MCImageView: UIImageView {
         Task {
             image = await APIService.shared.fetchCharacterImage(forCharacter: character) ?? placeholder
         }
+    }
+    
+    func fetchComicImage(for comic: Comic) {
+        #warning("Create Comic network call")
     }
 }

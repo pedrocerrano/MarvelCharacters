@@ -10,9 +10,17 @@ import UIKit
 class CharacterDetailViewController: UIViewController {
 
     //MARK: - Properties
-    let headerView          = UIView()
-    var itemViews: [UIView] = []
+    enum Section { case main }
     
+    let headerView        = UIView()
+    let comicsContentView = UIView()
+    
+    var comicsCollectionView: UICollectionView!
+    var comicsDataSource: UICollectionViewDiffableDataSource<Section, Comic>!
+
+    var comics: [Comic] = []
+    var pageOffset      = 0
+
     var character: Character!
     
     
@@ -21,8 +29,10 @@ class CharacterDetailViewController: UIViewController {
         super.viewDidLoad()
 
         configureViewController()
-        add(childViewController: MCCharacterHeaderViewController(character: character), to: headerView)
-        layoutUI()
+        add(childViewController: MCImageHeaderViewController(character: character), to: headerView)
+        configureViews()
+        comicsContentView.backgroundColor = Colors.marvelRed
+//        configureComicsCollectionView()
     }
     
 
@@ -30,12 +40,9 @@ class CharacterDetailViewController: UIViewController {
     private func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.tintColor = Colors.marvelRed
         title = character.name
     }
-    
-//    private func configureUI(with character: Character) {
-//        self.add(childViewController: MCCharacterHeaderViewController(character: character), to: headerView)
-//    }
     
     private func add(childViewController: UIViewController, to containerView: UIView) {
         addChild(childViewController)
@@ -44,23 +51,51 @@ class CharacterDetailViewController: UIViewController {
         childViewController.didMove(toParent: self)
     }
     
-    private func layoutUI() {
-        let padding: CGFloat = 12
-        itemViews = [headerView]
+    private func configureViews() {
+        view.addSubview(headerView)
+        view.addSubview(comicsContentView)
         
-        for itemView in itemViews {
-            view.addSubview(itemView)
-            itemView.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint.activate([
-                itemView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-                itemView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            ])
-        }
+        headerView.translatesAutoresizingMaskIntoConstraints        = false
+        comicsContentView.translatesAutoresizingMaskIntoConstraints = false
+        
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 120),
+            headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: Constraint.characterDetailImageHeight),
+            
+            comicsContentView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            comicsContentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            comicsContentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            comicsContentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
+    
+    private func configureComicsCollectionView() {
+        comicsCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createComicFlowLayout(in: view))
+        comicsContentView.addSubview(comicsCollectionView)
+        comicsCollectionView.delegate        = self
+        comicsCollectionView.backgroundColor = .systemBackground
+        comicsCollectionView.register(ComicCollectionViewCell.self, forCellWithReuseIdentifier: ComicCollectionViewCell.reuseID)
+    }
+    
+    private func updateData(on comics: [Comic]) {
+        var shapshot = NSDiffableDataSourceSnapshot<Section, Comic>()
+        shapshot.appendSections([.main])
+        shapshot.appendItems(comics)
+        DispatchQueue.main.async { self.comicsDataSource.apply(shapshot, animatingDifferences: true) }
+    }
 } //: CLASS
+
+
+//MARK: - ComicCollectionViewDelegate
+extension CharacterDetailViewController: UICollectionViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+} //: CollectionViewDelegate

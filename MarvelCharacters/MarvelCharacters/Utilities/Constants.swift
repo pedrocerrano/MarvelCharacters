@@ -16,6 +16,10 @@ enum LabelText {
     static let characters = "C H A R A C T E R S"
 }
 
+enum Constraint {
+    static let characterDetailImageHeight: CGFloat = 240
+}
+
 enum ScreenSize {
     static let width     = UIScreen.main.bounds.size.width
     static let height    = UIScreen.main.bounds.size.height

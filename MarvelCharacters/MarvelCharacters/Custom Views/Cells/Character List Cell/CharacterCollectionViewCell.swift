@@ -11,7 +11,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
     static let reuseID     = "CharacterCell"
-    var characterImageView = MCCharacterImageView(frame: .zero)
+    var characterImageView = MCImageView(frame: .zero)
     
     
     //MARK: - Designated Initializer
@@ -24,18 +24,13 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-    }
-    
     
     //MARK: - Functions
     func set(character: Character) {
-//        contentConfiguration = UIHostingConfiguration {
-//            CharacterView(thumbnail: character.thumbnail)
-//        }
-        characterImageView.fetchCharacterImage(for: character)
+        contentConfiguration = UIHostingConfiguration {
+            CharacterView(thumbnail: character.thumbnail)
+        }
+        .margins(.all, 0)
     }
     
     private func configure() {

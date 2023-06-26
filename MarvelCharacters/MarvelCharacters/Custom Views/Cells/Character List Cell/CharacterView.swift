@@ -13,7 +13,7 @@ struct CharacterView: View {
     var thumbnail: Thumbnail
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             AsyncImage(url: URL(string: thumbnail.imagePath + "." + thumbnail.imageExtention)) { image in
                 image
                     .resizable()
