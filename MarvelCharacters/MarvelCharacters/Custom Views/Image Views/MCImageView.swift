@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MCCharacterImageView: UIImageView {
+class MCImageView: UIImageView {
 
     //MARK: - Properties
     let cache       = APIService.shared.cache
