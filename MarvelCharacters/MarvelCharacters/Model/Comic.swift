@@ -8,7 +8,6 @@
 import Foundation
 
 struct ComicDictionary: Codable {
-    
     private enum CodingKeys: String, CodingKey {
         case comicListData = "data"
     }

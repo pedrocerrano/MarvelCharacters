@@ -64,7 +64,7 @@ class APIService {
         }
         
         guard let finalURL = URL(string: imageURLString) else { return nil }
-        print("fetchAvengerImage Final URL: \(finalURL)")
+        print("fetchCharacterImage Final URL: \(finalURL)")
         
         do {
             let (data, _) = try await URLSession.shared.data(from: finalURL)
@@ -77,11 +77,51 @@ class APIService {
         }
     }
     
-    func fetchComicList() {
+    func fetchComicList(offset: String, forCharacter character: Character) async throws -> ComicDictionary {
+        guard let baseURL = URL(string: baseURL) else { throw MarvelError.invalidURL }
+        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        urlComponents?.path.append(contentsOf: "/\(character.id)")
+        urlComponents?.path.append(contentsOf: comicPath)
         
+        let limitQuery      = URLQueryItem(name: limitKey, value: limitValue)
+        let offsetQuery     = URLQueryItem(name: offsetKey, value: offset)
+        let timeStampQuery  = URLQueryItem(name: timeStampKey, value: timeStampValue)
+        let apiQuery        = URLQueryItem(name: apiKeyKey, value: apiKeyValue)
+        let hashQuery       = URLQueryItem(name: hashKey, value: hashValue)
+        urlComponents?.queryItems = [limitQuery, offsetQuery, timeStampQuery, apiQuery, hashQuery]
+        
+        guard let finalURL = urlComponents?.url else { throw MarvelError.invalidURL }
+        print("fetchComicList Final URL: \(finalURL)")
+        
+        let (data, response) = try await URLSession.shared.data(from: finalURL)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw MarvelError.invalidResponse
+        }
+        
+        do {
+            return try decoder.decode(ComicDictionary.self, from: data)
+        } catch {
+            throw MarvelError.invalidData
+        }
     }
     
-    func fetchComicImage() {
+    func fetchComicImage(forComic comic: Comic) async -> UIImage? {
+        let imageURLString = "\(comic.thumbnail.imagePath).\(comic.thumbnail.imageExtention)"
+        let cacheKey = NSString(string: imageURLString)
+        if let image = cache.object(forKey: cacheKey) {
+            return image
+        }
         
+        guard let finalURL = URL(string: imageURLString) else { return nil }
+        print("fetchComicImage Final URL: \(finalURL)")
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: finalURL)
+            guard let image = UIImage(data: data) else { return nil }
+            cache.setObject(image, forKey: cacheKey)
+            return image
+        } catch {
+            return nil
+        }
     }
 } //: CLASS
