@@ -30,11 +30,9 @@ struct ComicsResults: Codable {
 
 struct Comic: Codable, Hashable {
     let format: String
-    let formatType: String
-    let noVariants: Bool
     let id: Int
     let title: String
-    let description: String
+    let description: String?
     let pageCount: Int
     let textObjects: [ComicText]
     let thumbnail: ComicThumbnail

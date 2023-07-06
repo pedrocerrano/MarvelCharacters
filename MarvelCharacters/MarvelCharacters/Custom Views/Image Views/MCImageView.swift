@@ -39,6 +39,6 @@ class MCImageView: UIImageView {
     }
     
     func fetchComicImage(for comic: Comic) {
-        #warning("Create Comic network call")
+        
     }
 }

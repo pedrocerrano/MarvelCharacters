@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CharacterDetailViewController: UIViewController {
+class CharacterDetailViewController: MCDataLoadingViewController {
 
     //MARK: - Properties
     enum Section { case main }
@@ -31,8 +31,9 @@ class CharacterDetailViewController: UIViewController {
         configureViewController()
         add(childViewController: MCImageHeaderViewController(character: character), to: headerView)
         configureViews()
-        comicsContentView.backgroundColor = Colors.marvelRed
-//        configureComicsCollectionView()
+        configureComicsCollectionView()
+        configureDataSource()
+        fetchComics(offset: String(pageOffset))
     }
     
 
@@ -85,6 +86,35 @@ class CharacterDetailViewController: UIViewController {
         shapshot.appendSections([.main])
         shapshot.appendItems(comics)
         DispatchQueue.main.async { self.comicsDataSource.apply(shapshot, animatingDifferences: true) }
+    }
+    
+    private func fetchComics(offset: String) {
+        showLoadingView()
+        
+        Task {
+            do {
+                let comicDictionary = try await APIService.shared.fetchComicList(offset: offset, forCharacter: character)
+                let comics = comicDictionary.comicListData.comicResults
+                updateComicListUI(with: comics)
+                dismissLoadingView()
+            } catch {
+                #warning("Create alert")
+                dismissLoadingView()
+            }
+        }
+    }
+    
+    private func updateComicListUI(with comics: [Comic]) {
+        self.comics.append(contentsOf: comics)
+        updateData(on: comics)
+    }
+    
+    private func configureDataSource() {
+        comicsDataSource = UICollectionViewDiffableDataSource<Section, Comic>(collectionView: comicsCollectionView, cellProvider: { collectionView, indexPath, comic in
+            let cell = self.comicsCollectionView.dequeueReusableCell(withReuseIdentifier: ComicCollectionViewCell.reuseID, for: indexPath) as! ComicCollectionViewCell
+            cell.set(comic: comic)
+            return cell
+        })
     }
 } //: CLASS
 

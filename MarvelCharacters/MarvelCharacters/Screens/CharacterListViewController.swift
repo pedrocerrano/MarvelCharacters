@@ -20,9 +20,8 @@ class CharacterListViewController: MCDataLoadingViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, Character>!
 
     var characters: [Character]         = []
-    var filteredCharacters: [Character] = []
+//    var filteredCharacters: [Character] = []
     var pageOffset                      = 0
-    
     
     
     //MARK: - Lifecycle
@@ -35,7 +34,7 @@ class CharacterListViewController: MCDataLoadingViewController {
         configureDataSource()
         fetchCharacters(pageOffset: String(pageOffset))
     }
-
+    
     
     //MARK: - Functions
     private func configureViewController() {

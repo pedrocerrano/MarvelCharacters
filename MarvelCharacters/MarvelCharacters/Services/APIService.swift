@@ -99,7 +99,9 @@ class APIService {
         }
         
         do {
-            return try decoder.decode(ComicDictionary.self, from: data)
+            let comicDictionary = try decoder.decode(ComicDictionary.self, from: data)
+            print("\(comicDictionary.comicListData.comicResults[0].title)")
+            return comicDictionary
         } catch {
             throw MarvelError.invalidData
         }
