@@ -35,6 +35,7 @@
 		297ABED82A4A1F6B00D3F85B /* MCImageHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297ABED72A4A1F6B00D3F85B /* MCImageHeaderViewController.swift */; };
 		297ABEDD2A4A3B9100D3F85B /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297ABEDC2A4A3B9100D3F85B /* ComicCollectionViewCell.swift */; };
 		297ABEE12A4A3D1E00D3F85B /* ComicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297ABEE02A4A3D1E00D3F85B /* ComicView.swift */; };
+		298356FF2A5DB0A600A514B3 /* MarvelEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298356FE2A5DB0A600A514B3 /* MarvelEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		297ABED72A4A1F6B00D3F85B /* MCImageHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCImageHeaderViewController.swift; sourceTree = "<group>"; };
 		297ABEDC2A4A3B9100D3F85B /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
 		297ABEE02A4A3D1E00D3F85B /* ComicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicView.swift; sourceTree = "<group>"; };
+		298356FE2A5DB0A600A514B3 /* MarvelEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				29096AA52A449AA50008542A /* APIService.swift */,
+				298356FE2A5DB0A600A514B3 /* MarvelEndpoints.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				29096AA62A449AA50008542A /* APIService.swift in Sources */,
 				297ABEE12A4A3D1E00D3F85B /* ComicView.swift in Sources */,
 				292F3B872A438A010079751D /* CharacterListViewController.swift in Sources */,
+				298356FF2A5DB0A600A514B3 /* MarvelEndpoints.swift in Sources */,
 				29096AAA2A44A92B0008542A /* MCDataLoadingViewController.swift in Sources */,
 				292F3B922A439C530079751D /* MCTextField.swift in Sources */,
 				29096ABC2A44F1C60008542A /* MCCharacterSecondaryLabel.swift in Sources */,

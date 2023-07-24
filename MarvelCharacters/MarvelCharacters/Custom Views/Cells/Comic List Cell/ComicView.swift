@@ -17,7 +17,7 @@ struct ComicView: View {
             AsyncImage(url: URL(string: comicThumbnail.imagePath + "." + comicThumbnail.imageExtention)) { image in
                 image
                     .resizable()
-                    .aspectRatio(1, contentMode: .fill)
+                    .aspectRatio(1, contentMode: .fit)
                     .clipped()
             } placeholder: {
                 Image(uiImage: Images.marvelLogo!)

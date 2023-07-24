@@ -32,7 +32,7 @@ enum UIHelper {
         let flowLayout                     = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing      = 1
         flowLayout.minimumInteritemSpacing = 1
-        flowLayout.itemSize                = CGSize(width: itemWidth, height: itemWidth * 1.5)
+        flowLayout.itemSize                = CGSize(width: itemWidth, height: itemWidth)
         
         return flowLayout
     }

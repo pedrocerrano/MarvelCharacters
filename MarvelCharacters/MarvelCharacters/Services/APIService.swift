@@ -7,46 +7,22 @@
 
 import UIKit
 
-class APIService {
+struct APIService {
     
     //MARK: - Properties
     static let shared = APIService()
     let decoder       = JSONDecoder()
     let cache         = NSCache<NSString, UIImage>()
     
-    let baseURL   = "https://gateway.marvel.com/v1/public/characters"
-    let comicPath = "/comics"
-    
-    let limitKey   = "limit"
-    let limitValue = "100"
-    let offsetKey  = "offset"
-    
-    let timeStampKey   = "ts"
-    let timeStampValue = "1"
-    let apiKeyKey      = "apikey"
-    let apiKeyValue    = "68470b7b93879cefb8d99a7c5a5b6c0f"
-    let hashKey        = "hash"
-    let hashValue      = "2823b9ddec02040bbdd3b5a6ae2c70f9"
-    
     
     //MARK: - Functions
-    func fetchCharacterList(paginationOffset offset: String) async throws -> CharacterDictionary {
-        guard let baseURL = URL(string: baseURL) else { throw MarvelError.invalidURL }
-        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        
-        let limitQuery     = URLQueryItem(name: limitKey, value: limitValue)
-        let offsetQuery    = URLQueryItem(name: offsetKey, value: offset)
-        let timeStampQuery = URLQueryItem(name: timeStampKey, value: timeStampValue)
-        let apiQuery       = URLQueryItem(name: apiKeyKey, value: apiKeyValue)
-        let hashQuery      = URLQueryItem(name: hashKey, value: hashValue)
-        urlComponents?.queryItems = [limitQuery, offsetQuery, timeStampQuery, apiQuery, hashQuery]
-        
-        guard let finalURL = urlComponents?.url else { throw MarvelError.invalidURL }
+    func fetchCharacterList(with endpoint: MarvelEndpoints) async throws -> CharacterDictionary {
+        guard let finalURL = endpoint.fullURL else { throw MarvelError.invalidURL }
         print("fetchCharacterList Final URL: \(finalURL)")
         
         let (data, response) = try await URLSession.shared.data(from: finalURL)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw MarvelError.invalidResponse
+        if let response = response as? HTTPURLResponse {
+            print("Fetch Character Response Status Code: \(response.statusCode)")
         }
             
         do {
@@ -77,25 +53,13 @@ class APIService {
         }
     }
     
-    func fetchComicList(offset: String, forCharacter character: Character) async throws -> ComicDictionary {
-        guard let baseURL = URL(string: baseURL) else { throw MarvelError.invalidURL }
-        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        urlComponents?.path.append(contentsOf: "/\(character.id)")
-        urlComponents?.path.append(contentsOf: comicPath)
-        
-        let limitQuery      = URLQueryItem(name: limitKey, value: limitValue)
-        let offsetQuery     = URLQueryItem(name: offsetKey, value: offset)
-        let timeStampQuery  = URLQueryItem(name: timeStampKey, value: timeStampValue)
-        let apiQuery        = URLQueryItem(name: apiKeyKey, value: apiKeyValue)
-        let hashQuery       = URLQueryItem(name: hashKey, value: hashValue)
-        urlComponents?.queryItems = [limitQuery, offsetQuery, timeStampQuery, apiQuery, hashQuery]
-        
-        guard let finalURL = urlComponents?.url else { throw MarvelError.invalidURL }
+    func fetchComicList(with endpoint: MarvelEndpoints) async throws -> ComicDictionary {
+        guard let finalURL = endpoint.fullURL else { throw MarvelError.invalidURL }
         print("fetchComicList Final URL: \(finalURL)")
         
         let (data, response) = try await URLSession.shared.data(from: finalURL)
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw MarvelError.invalidResponse
+        if let response = response as? HTTPURLResponse {
+            print("Fetch Comic List Response Status Code: \(response.statusCode)")
         }
         
         do {

@@ -93,8 +93,10 @@ class CharacterDetailViewController: MCDataLoadingViewController {
         
         Task {
             do {
-                let comicDictionary = try await APIService.shared.fetchComicList(offset: offset, forCharacter: character)
-                let comics = comicDictionary.comicListData.comicResults
+                let comicDictionary = try await APIService.shared.fetchComicList(with: .comics(offset, character))
+                let comics = comicDictionary.comicListData.comicResults.filter { comic in
+                    !comic.thumbnail.imagePath.contains("image_not_available")
+                }
                 updateComicListUI(with: comics)
                 dismissLoadingView()
             } catch {
@@ -126,6 +128,7 @@ extension CharacterDetailViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let comic = comics[indexPath.item]
+        print("\(character.name) in: \"\(comic.title)\"")
     }
 } //: CollectionViewDelegate

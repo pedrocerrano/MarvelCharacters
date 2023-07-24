@@ -20,7 +20,6 @@ class CharacterListViewController: MCDataLoadingViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, Character>!
 
     var characters: [Character]         = []
-//    var filteredCharacters: [Character] = []
     var pageOffset                      = 0
     
     
@@ -91,12 +90,12 @@ class CharacterListViewController: MCDataLoadingViewController {
         
         Task {
             do {
-                let characterDictionary = try await APIService.shared.fetchCharacterList(paginationOffset: pageOffset)
-                let characters          = characterDictionary.listData.listResults.filter ({ character in
+                let characterDictionary = try await APIService.shared.fetchCharacterList(with: .characters(pageOffset))
+                let characters          = characterDictionary.listData.listResults.filter { character in
                     !character.thumbnail.imagePath.contains("image_not_available")
                     && !character.thumbnail.imageExtention.contains("gif")
                     && character.comics.available != 0
-                })
+                }
                 updateUI(with: characters)
                 dismissLoadingView()
             } catch {
