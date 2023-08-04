@@ -11,7 +11,7 @@ enum MarvelEndpoints {
     static let baseURL = URL(string: "https://gateway.marvel.com/v1/public/characters")
     
     case characters(String)
-    case comics(String, Character)
+    case comics(String, MarvelCharacter)
     
     var fullURL: URL? {
         let comicPath = "/comics"

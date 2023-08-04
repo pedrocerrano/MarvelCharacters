@@ -32,13 +32,13 @@ class MCImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func fetchCharacterImage(for character: Character) {
+    func fetchCharacterImage(for character: MarvelCharacter) {
         Task {
             image = await APIService.shared.fetchCharacterImage(forCharacter: character) ?? placeholder
         }
     }
     
-    func fetchComicImage(for comic: Comic) {
+    func fetchComicImage(for comic: APIComic) {
         
     }
 }

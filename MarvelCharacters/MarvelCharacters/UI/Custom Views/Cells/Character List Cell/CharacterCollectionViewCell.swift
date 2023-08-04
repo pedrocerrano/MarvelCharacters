@@ -26,9 +26,9 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     
     //MARK: - Functions
-    func set(character: Character) {
+    func set(character: MarvelCharacter) {
         contentConfiguration = UIHostingConfiguration {
-            CharacterView(thumbnail: character.thumbnail)
+            CharacterView(character: character)
         }
         .margins(.all, 0)
     }

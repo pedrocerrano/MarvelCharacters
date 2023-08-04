@@ -16,12 +16,12 @@ class CharacterDetailViewController: MCDataLoadingViewController {
     let comicsContentView = UIView()
     
     var comicsCollectionView: UICollectionView!
-    var comicsDataSource: UICollectionViewDiffableDataSource<Section, Comic>!
+    var comicsDataSource: UICollectionViewDiffableDataSource<Section, APIComic>!
 
-    var comics: [Comic] = []
+    var comics: [APIComic] = []
     var pageOffset      = 0
 
-    var character: Character!
+    var character: MarvelCharacter!
     
     
     //MARK: - Lifecycle
@@ -81,8 +81,8 @@ class CharacterDetailViewController: MCDataLoadingViewController {
         comicsCollectionView.register(ComicCollectionViewCell.self, forCellWithReuseIdentifier: ComicCollectionViewCell.reuseID)
     }
     
-    private func updateData(on comics: [Comic]) {
-        var shapshot = NSDiffableDataSourceSnapshot<Section, Comic>()
+    private func updateData(on comics: [APIComic]) {
+        var shapshot = NSDiffableDataSourceSnapshot<Section, APIComic>()
         shapshot.appendSections([.main])
         shapshot.appendItems(comics)
         DispatchQueue.main.async { self.comicsDataSource.apply(shapshot, animatingDifferences: true) }
@@ -106,13 +106,13 @@ class CharacterDetailViewController: MCDataLoadingViewController {
         }
     }
     
-    private func updateComicListUI(with comics: [Comic]) {
+    private func updateComicListUI(with comics: [APIComic]) {
         self.comics.append(contentsOf: comics)
         updateData(on: comics)
     }
     
     private func configureDataSource() {
-        comicsDataSource = UICollectionViewDiffableDataSource<Section, Comic>(collectionView: comicsCollectionView, cellProvider: { collectionView, indexPath, comic in
+        comicsDataSource = UICollectionViewDiffableDataSource<Section, APIComic>(collectionView: comicsCollectionView, cellProvider: { collectionView, indexPath, comic in
             let cell = self.comicsCollectionView.dequeueReusableCell(withReuseIdentifier: ComicCollectionViewCell.reuseID, for: indexPath) as! ComicCollectionViewCell
             cell.set(comic: comic)
             return cell

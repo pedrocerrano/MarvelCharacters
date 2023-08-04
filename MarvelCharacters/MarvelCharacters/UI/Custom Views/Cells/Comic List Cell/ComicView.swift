@@ -10,7 +10,7 @@ import SwiftUI
 struct ComicView: View {
     
     //MARK: - Properties
-    var comicThumbnail: ComicThumbnail
+    var comicThumbnail: APIComicThumbnail
     
     var body: some View {
         VStack(spacing: 0) {
@@ -29,7 +29,7 @@ struct ComicView: View {
 }
 
 struct ComicView_Previews: PreviewProvider {
-    static let comicDemoThumbnail = ComicThumbnail(imagePath: "http://i.annihil.us/u/prod/marvel/i/mg/d/03/58dd080719806", imageExtention: "jpg")
+    static let comicDemoThumbnail = APIComicThumbnail(imagePath: "http://i.annihil.us/u/prod/marvel/i/mg/d/03/58dd080719806", imageExtention: "jpg")
     
     static var previews: some View {
         let width                       = ScreenSize.width

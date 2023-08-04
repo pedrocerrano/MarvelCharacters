@@ -17,10 +17,10 @@ class CharacterListViewController: MCDataLoadingViewController {
     let contentView     = UIView()
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, Character>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, MarvelCharacter>!
 
-    var characters: [Character]         = []
-    var pageOffset                      = 0
+    var characters: [MarvelCharacter] = []
+    var pageOffset                    = 0
     
     
     //MARK: - Lifecycle
@@ -78,8 +78,8 @@ class CharacterListViewController: MCDataLoadingViewController {
         collectionView.register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.reuseID)
     }
     
-    private func updateData(on characters: [Character]) {
-        var shapshot = NSDiffableDataSourceSnapshot<Section, Character>()
+    private func updateData(on characters: [MarvelCharacter]) {
+        var shapshot = NSDiffableDataSourceSnapshot<Section, MarvelCharacter>()
         shapshot.appendSections([.main])
         shapshot.appendItems(characters)
         DispatchQueue.main.async { self.dataSource.apply(shapshot, animatingDifferences: true) }
@@ -90,11 +90,11 @@ class CharacterListViewController: MCDataLoadingViewController {
         
         Task {
             do {
-                let characterDictionary = try await APIService.shared.fetchCharacterList(with: .characters(pageOffset))
-                let characters          = characterDictionary.listData.listResults.filter { character in
-                    !character.thumbnail.imagePath.contains("image_not_available")
-                    && !character.thumbnail.imageExtention.contains("gif")
-                    && character.comics.available != 0
+                let marvelCharacters = try await APIService.shared.fetchCharacterList(with: .characters(pageOffset))
+                let characters       = marvelCharacters.filter { character in
+                    !character.thumbnail.contains("image_not_available")
+                    && !character.thumbnail.contains("gif")
+                    && character.comicsAvailable != 0
                 }
                 updateUI(with: characters)
                 dismissLoadingView()
@@ -105,13 +105,13 @@ class CharacterListViewController: MCDataLoadingViewController {
         }
     }
     
-    private func updateUI(with characters: [Character]) {
+    private func updateUI(with characters: [MarvelCharacter]) {
         self.characters.append(contentsOf: characters)
         self.updateData(on: self.characters)
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Character>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, character) in
+        dataSource = UICollectionViewDiffableDataSource<Section, MarvelCharacter>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, character) in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.reuseID, for: indexPath) as! CharacterCollectionViewCell
             cell.set(character: character)
             return cell

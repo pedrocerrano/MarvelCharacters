@@ -15,11 +15,11 @@ class MCImageHeaderViewController: UIViewController {
     let characterNameLabel   = MCCharacterNameLabel(textAlignment: .left, fontSize: 25)
     let comicsAppearingLabel = MCCharacterSecondaryLabel(textAlignment: .left, textStyle: .body)
     
-    var character: Character!
+    var character: MarvelCharacter!
     
     
     //MARK: - Designated Initializer
-    init(character: Character!) {
+    init(character: MarvelCharacter!) {
         super.init(nibName: nil, bundle: nil)
         self.character = character
     }
@@ -48,7 +48,7 @@ class MCImageHeaderViewController: UIViewController {
         backgroundView.backgroundColor = .systemBackground
         backgroundView.alpha           = 0.7
         characterNameLabel.text        = character.name
-        comicsAppearingLabel.text      = "Appears in \(character.comics.available) comics"
+        comicsAppearingLabel.text      = "Appears in \(character.comicsAvailable) comics"
     }
     
     private func layoutUI() {

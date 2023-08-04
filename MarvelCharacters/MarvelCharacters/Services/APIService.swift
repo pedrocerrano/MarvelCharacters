@@ -16,7 +16,7 @@ struct APIService {
     
     
     //MARK: - Functions
-    func fetchCharacterList(with endpoint: MarvelEndpoints) async throws -> CharacterDictionary {
+    func fetchCharacterList(with endpoint: MarvelEndpoints) async throws -> [MarvelCharacter] {
         guard let finalURL = endpoint.fullURL else { throw MarvelError.invalidURL }
         print("fetchCharacterList Final URL: \(finalURL)")
         
@@ -26,14 +26,15 @@ struct APIService {
         }
             
         do {
-            return try decoder.decode(CharacterDictionary.self, from: data)
+            let apiCharacterDictionary = try decoder.decode(APICharacterDictionary.self, from: data)
+            return APIServiceModelHelper.createMarvelCharacter(apiCharacterDictionary.listData.listResults)
         } catch {
             throw MarvelError.invalidData
         }
     }
     
-    func fetchCharacterImage(forCharacter character: Character) async -> UIImage? {
-        let imageURLString = "\(character.thumbnail.imagePath).\(character.thumbnail.imageExtention)"
+    func fetchCharacterImage(forCharacter character: MarvelCharacter) async -> UIImage? {
+        let imageURLString = character.thumbnail
         let cacheKey = NSString(string: imageURLString)
         if let image = cache.object(forKey: cacheKey) {
             return image
@@ -53,7 +54,7 @@ struct APIService {
         }
     }
     
-    func fetchComicList(with endpoint: MarvelEndpoints) async throws -> ComicDictionary {
+    func fetchComicList(with endpoint: MarvelEndpoints) async throws -> APIComicDictionary {
         guard let finalURL = endpoint.fullURL else { throw MarvelError.invalidURL }
         print("fetchComicList Final URL: \(finalURL)")
         
@@ -63,7 +64,7 @@ struct APIService {
         }
         
         do {
-            let comicDictionary = try decoder.decode(ComicDictionary.self, from: data)
+            let comicDictionary = try decoder.decode(APIComicDictionary.self, from: data)
             print("\(comicDictionary.comicListData.comicResults[0].title)")
             return comicDictionary
         } catch {
@@ -71,7 +72,7 @@ struct APIService {
         }
     }
     
-    func fetchComicImage(forComic comic: Comic) async -> UIImage? {
+    func fetchComicImage(forComic comic: APIComic) async -> UIImage? {
         let imageURLString = "\(comic.thumbnail.imagePath).\(comic.thumbnail.imageExtention)"
         let cacheKey = NSString(string: imageURLString)
         if let image = cache.object(forKey: cacheKey) {

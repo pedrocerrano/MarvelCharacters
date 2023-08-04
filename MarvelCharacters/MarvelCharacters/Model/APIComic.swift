@@ -1,5 +1,5 @@
 //
-//  Comic.swift
+//  APIComic.swift
 //  MarvelCharacters
 //
 //  Created by iMac Pro on 6/22/23.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct ComicDictionary: Codable {
+struct APIComicDictionary: Codable {
     private enum CodingKeys: String, CodingKey {
         case comicListData = "data"
     }
     
-    let comicListData: ComicsResults
+    let comicListData: APIComicsResults
 }
 
-struct ComicsResults: Codable {
+struct APIComicsResults: Codable {
     
     private enum CodingKeys: String, CodingKey {
         case offset
@@ -25,24 +25,24 @@ struct ComicsResults: Codable {
     
     let offset: Int
     let total: Int
-    let comicResults: [Comic]
+    let comicResults: [APIComic]
 }
 
-struct Comic: Codable, Hashable {
+struct APIComic: Codable, Hashable {
     let format: String
     let id: Int
     let title: String
     let description: String?
     let pageCount: Int
-    let textObjects: [ComicText]
-    let thumbnail: ComicThumbnail
+    let textObjects: [APIComicText]
+    let thumbnail: APIComicThumbnail
 }
 
-struct ComicText: Codable, Hashable {
+struct APIComicText: Codable, Hashable {
     let text: String
 }
 
-struct ComicThumbnail: Codable, Hashable {
+struct APIComicThumbnail: Codable, Hashable {
     
     private enum CodingKeys: String, CodingKey {
         case imagePath      = "path"
