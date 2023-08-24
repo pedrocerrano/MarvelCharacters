@@ -10,11 +10,11 @@ import SwiftUI
 struct ComicView: View {
     
     //MARK: - Properties
-    var comicThumbnail: APIComicThumbnail
+    var comic: MarvelComic
     
     var body: some View {
         VStack(spacing: 0) {
-            AsyncImage(url: URL(string: comicThumbnail.imagePath + "." + comicThumbnail.imageExtention)) { image in
+            AsyncImage(url: URL(string: comic.comicThumbnail)) { image in
                 image
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
@@ -29,7 +29,6 @@ struct ComicView: View {
 }
 
 struct ComicView_Previews: PreviewProvider {
-    static let comicDemoThumbnail = APIComicThumbnail(imagePath: "http://i.annihil.us/u/prod/marvel/i/mg/d/03/58dd080719806", imageExtention: "jpg")
     
     static var previews: some View {
         let width                       = ScreenSize.width
@@ -37,7 +36,7 @@ struct ComicView_Previews: PreviewProvider {
         let availableWidth              = width - (minimumItemSpacing * 2)
         let itemWidth                   = availableWidth / 3
         
-        ComicView(comicThumbnail: comicDemoThumbnail)
+        ComicView(comic: MarvelComic.sampleMarvelComic)
             .frame(width: itemWidth)
             .padding()
             .previewLayout(.sizeThatFits)

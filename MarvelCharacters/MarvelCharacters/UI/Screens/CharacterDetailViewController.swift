@@ -16,9 +16,9 @@ class CharacterDetailViewController: MCDataLoadingViewController {
     let comicsContentView = UIView()
     
     var comicsCollectionView: UICollectionView!
-    var comicsDataSource: UICollectionViewDiffableDataSource<Section, APIComic>!
+    var comicsDataSource: UICollectionViewDiffableDataSource<Section, MarvelComic>!
 
-    var comics: [APIComic] = []
+    var comics: [MarvelComic] = []
     var pageOffset      = 0
 
     var character: MarvelCharacter!
@@ -81,8 +81,8 @@ class CharacterDetailViewController: MCDataLoadingViewController {
         comicsCollectionView.register(ComicCollectionViewCell.self, forCellWithReuseIdentifier: ComicCollectionViewCell.reuseID)
     }
     
-    private func updateData(on comics: [APIComic]) {
-        var shapshot = NSDiffableDataSourceSnapshot<Section, APIComic>()
+    private func updateData(on comics: [MarvelComic]) {
+        var shapshot = NSDiffableDataSourceSnapshot<Section, MarvelComic>()
         shapshot.appendSections([.main])
         shapshot.appendItems(comics)
         DispatchQueue.main.async { self.comicsDataSource.apply(shapshot, animatingDifferences: true) }
@@ -90,12 +90,11 @@ class CharacterDetailViewController: MCDataLoadingViewController {
     
     private func fetchComics(offset: String) {
         showLoadingView()
-        
         Task {
             do {
                 let comicDictionary = try await APIService.shared.fetchComicList(with: .comics(offset, character))
-                let comics = comicDictionary.comicListData.comicResults.filter { comic in
-                    !comic.thumbnail.imagePath.contains("image_not_available")
+                let comics = comicDictionary.filter { comic in
+                    !comic.comicThumbnail.contains("image_not_available")
                 }
                 updateComicListUI(with: comics)
                 dismissLoadingView()
@@ -106,13 +105,13 @@ class CharacterDetailViewController: MCDataLoadingViewController {
         }
     }
     
-    private func updateComicListUI(with comics: [APIComic]) {
+    private func updateComicListUI(with comics: [MarvelComic]) {
         self.comics.append(contentsOf: comics)
         updateData(on: comics)
     }
     
     private func configureDataSource() {
-        comicsDataSource = UICollectionViewDiffableDataSource<Section, APIComic>(collectionView: comicsCollectionView, cellProvider: { collectionView, indexPath, comic in
+        comicsDataSource = UICollectionViewDiffableDataSource<Section, MarvelComic>(collectionView: comicsCollectionView, cellProvider: { collectionView, indexPath, comic in
             let cell = self.comicsCollectionView.dequeueReusableCell(withReuseIdentifier: ComicCollectionViewCell.reuseID, for: indexPath) as! ComicCollectionViewCell
             cell.set(comic: comic)
             return cell

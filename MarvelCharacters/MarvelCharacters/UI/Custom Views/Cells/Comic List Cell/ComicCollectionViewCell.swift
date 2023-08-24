@@ -26,9 +26,9 @@ class ComicCollectionViewCell: UICollectionViewCell {
     
     
     //MARK: - Functions
-    func set(comic: APIComic) {
+    func set(comic: MarvelComic) {
         contentConfiguration = UIHostingConfiguration {
-            ComicView(comicThumbnail: comic.thumbnail)
+            ComicView(comic: comic)
         }
         .margins(.all, 0)
     }

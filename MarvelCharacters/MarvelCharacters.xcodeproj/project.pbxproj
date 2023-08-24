@@ -93,8 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				29096AA02A448E090008542A /* APICharacter.swift */,
-				2988B06B2A7D40C70004CDD1 /* MarvelCharacter.swift */,
 				29096AA22A4495870008542A /* APIComic.swift */,
+				2988B06B2A7D40C70004CDD1 /* MarvelCharacter.swift */,
 				2988B06F2A7D4FAC0004CDD1 /* MarvelComic.swift */,
 			);
 			path = Model;

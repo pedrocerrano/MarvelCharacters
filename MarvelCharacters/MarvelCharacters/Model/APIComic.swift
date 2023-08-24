@@ -34,12 +34,12 @@ struct APIComic: Codable, Hashable {
     let title: String
     let description: String?
     let pageCount: Int
-    let textObjects: [APIComicText]
+    let characters: APIComicCharacters
     let thumbnail: APIComicThumbnail
 }
 
-struct APIComicText: Codable, Hashable {
-    let text: String
+struct APIComicCharacters: Codable, Hashable {
+    let available: Int
 }
 
 struct APIComicThumbnail: Codable, Hashable {

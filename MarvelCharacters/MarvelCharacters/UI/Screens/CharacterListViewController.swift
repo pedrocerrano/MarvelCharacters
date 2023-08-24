@@ -20,7 +20,7 @@ class CharacterListViewController: MCDataLoadingViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, MarvelCharacter>!
 
     var characters: [MarvelCharacter] = []
-    var pageOffset                    = 0
+    var pageOffset = 0
     
     
     //MARK: - Lifecycle

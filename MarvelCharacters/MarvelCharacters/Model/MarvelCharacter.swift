@@ -20,6 +20,7 @@ struct MarvelCharacter: Identifiable, Hashable {
 
 #if DEBUG
 extension MarvelCharacter {
+    
     static let sampleMarvelCharacter = MarvelCharacter(id: 0,
                                                        name: "Captain America",
                                                        description: "The best Marvel superhero!",
@@ -29,3 +30,4 @@ extension MarvelCharacter {
                                                        comicsColletionURI: "Comics Collection URI placeholder")
 }
 #endif
+

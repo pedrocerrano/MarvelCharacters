@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct APIService {
+class APIService {
     
     //MARK: - Properties
     static let shared = APIService()
@@ -54,7 +54,7 @@ struct APIService {
         }
     }
     
-    func fetchComicList(with endpoint: MarvelEndpoints) async throws -> APIComicDictionary {
+    func fetchComicList(with endpoint: MarvelEndpoints) async throws -> [MarvelComic] {
         guard let finalURL = endpoint.fullURL else { throw MarvelError.invalidURL }
         print("fetchComicList Final URL: \(finalURL)")
         
@@ -65,15 +65,14 @@ struct APIService {
         
         do {
             let comicDictionary = try decoder.decode(APIComicDictionary.self, from: data)
-            print("\(comicDictionary.comicListData.comicResults[0].title)")
-            return comicDictionary
+            return APIServiceModelHelper.createMarvelComic(comicDictionary.comicListData.comicResults)
         } catch {
             throw MarvelError.invalidData
         }
     }
     
-    func fetchComicImage(forComic comic: APIComic) async -> UIImage? {
-        let imageURLString = "\(comic.thumbnail.imagePath).\(comic.thumbnail.imageExtention)"
+    func fetchComicImage(forComic comic: MarvelComic) async -> UIImage? {
+        let imageURLString = comic.comicThumbnail
         let cacheKey = NSString(string: imageURLString)
         if let image = cache.object(forKey: cacheKey) {
             return image
